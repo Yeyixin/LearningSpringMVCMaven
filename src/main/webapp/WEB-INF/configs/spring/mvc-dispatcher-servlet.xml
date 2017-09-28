@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd ">
+
+    <!-- 本配置文件是工名为 mvc-dispatcher 的DispatcherServlet使用，提供其相关的 Spring MVC配置-->
+
+    <!-- 激活 @Required @Autowired，JSR 250's @PostConstruct，@PreDestroy and @Resource 等标注-->
+    <context:annotation-config></context:annotation-config>
+
+    <!-- DispatcherServlet 上下文，只搜索 @Controller 标注的类 不搜索其他标注的类，如 @Service -->
+    <context:component-scan base-package="com.yyx.*">
+        <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />-->
+    </context:component-scan>
+
+    <!-- HandlerMapping 无需配置，Spring MVC可以默认启动
+        DefaultAnnotationHandlerMapping annotation-driven HandlerMapping
+    -->
+    <!-- 扩充了注解驱动，可以将请求参数绑定到控制器参数-->
+    <!-- DispatcherServlet 启用基于 annotation 的 handlerMapping-->
+    <mvc:annotation-driven />
+    
+    <!-- 静态资源处理: css，js，img-->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/img/**" location="/img/"/>
+
+    <!-- 配置 viewresolver 的前缀和后缀-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</beans>
