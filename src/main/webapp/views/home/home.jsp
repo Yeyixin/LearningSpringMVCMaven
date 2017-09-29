@@ -5,18 +5,23 @@
   Time: 上午12:06
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%--<%
     String path =  "http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";
+%>--%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <html>
 <head>
     <meta charset="utf-8">
     <title>Title</title>
-    <script type="text/javascript" src="<%=path%>js/vue.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/vue.min.js"></script>
 </head>
 <body>
-
+<div><%=path%></div>
+<div><%=basePath%></div>
 <div id="app">
     <p v-if="seen">现在你看到我了</p>
     <template v-if="ok">

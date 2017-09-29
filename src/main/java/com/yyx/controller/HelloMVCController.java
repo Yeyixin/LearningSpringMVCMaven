@@ -17,7 +17,7 @@ public class HelloMVCController {
     @RequestMapping("/mvc")
     public String helloMVC(){
         System.out.println(helloService.sayHello());
-        return "home";
+        return "home/home";
     }
 
 
