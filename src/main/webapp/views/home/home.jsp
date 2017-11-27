@@ -1,4 +1,3 @@
-<%@ taglib prefix="v-on" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: yeyx
@@ -54,7 +53,7 @@
         鼠标悬停几秒钟查看此处动态绑定的提示信息！
     </p>
     <input v-model="message" />
-    <button v-on:v-on:click="addMessage">添加到app3中</button>
+    <button v-on:click="addMessage">添加到app3中</button>
 </div>
 <script>
     var i = 3;
